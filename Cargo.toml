@@ -5,7 +5,7 @@ edition = "2021"
 authors = ["LunaStev <lunastev@gurmstudis.com>"]
 description = "A simple file upload and download server in Rust using Actix"
 license = "MPL-2.0"
-repository = "https://github.com/LunaStev/ferrum"
+repository = "https://github.com/LunaStev/fexon"
 
 [dependencies]
 actix-web = "4.0"
