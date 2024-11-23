@@ -1,6 +1,6 @@
 [package]
 name = "fexon"
-version = "0.1.1"
+version = "0.1.2"
 edition = "2021"
 authors = ["LunaStev <lunastev@gurmstudis.com>"]
 description = "A simple file upload and download server in Rust using Actix"
@@ -18,5 +18,5 @@ serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 
 [lib]
-name = "ferrum"
+name = "fexon"
 path = "src/lib.rs"

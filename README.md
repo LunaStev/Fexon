@@ -14,6 +14,7 @@ To include `fexon` in your Rust project, add it to your `Cargo.toml` file as fol
 ```toml
 [dependencies]
 fexon = "0.1.0"
+actix-web = "4.0"
 ```
 
 ## Example Usage
@@ -26,14 +27,14 @@ use actix_web::{web, App, HttpServer};
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
-HttpServer::new(|| {
-App::new()
-.route("/upload", web::post().to(upload_file))
-.route("/download/{file_name}", web::get().to(download_file))
-})
-.bind("127.0.0.1:8080")?
-.run()
-.await
+    HttpServer::new(|| {
+        App::new()
+            .route("/upload", web::post().to(upload_file))
+            .route("/download/{file_name}", web::get().to(download_file))
+    })
+        .bind("127.0.0.1:8080")?
+        .run()
+        .await
 }
 ```
 
