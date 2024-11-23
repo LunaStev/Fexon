@@ -1,5 +1,5 @@
-# Ferrum
-Ferrum is a simple file upload and download server written in Rust. It uses the Actix framework to provide functionality for uploading and downloading files over HTTP. It offers a fast and secure file management server solution.
+# Fexon
+Fexon is a simple file upload and download server written in Rust. It uses the Actix framework to provide functionality for uploading and downloading files over HTTP. It offers a fast and secure file management server solution.
 
 ## Features
 * File upload and download functionality
@@ -9,19 +9,19 @@ Ferrum is a simple file upload and download server written in Rust. It uses the 
 * Easy setup and deployment
 
 ## Installation
-To include `ferrum` in your Rust project, add it to your `Cargo.toml` file as follows:
+To include `fexon` in your Rust project, add it to your `Cargo.toml` file as follows:
 
 ```toml
 [dependencies]
-ferrum = "0.1.0"
+fexon = "0.1.0"
 ```
 
 ## Example Usage
-Below is an example code to upload and download files using `ferrum`.
+Below is an example code to upload and download files using `fexon`.
 
 ### Server Example
 ```rust
-use ferrum::{start_server, upload_file, download_file};
+use fexon::{start_server, upload_file, download_file};
 use actix_web::{web, App, HttpServer};
 
 #[actix_web::main]
@@ -63,7 +63,7 @@ To download a file, send a GET request to the /download/{file_name} endpoint.
 This project is licensed under the Mozilla Public License 2.0 (MPL-2.0). Please refer to the [LICENSE](LICENSE) file for more details.
 
 # Contributing
-If you'd like to contribute to ferrum, feel free to fork the repository and create a pull request. Contributions are always welcome!
+If you'd like to contribute to fexon, feel free to fork the repository and create a pull request. Contributions are always welcome!
 
 1. Fork the repository.
 2. Create a new branch (git checkout -b feature-name).
