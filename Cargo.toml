@@ -1,6 +1,6 @@
 [package]
 name = "fexon"
-version = "0.1.2"
+version = "0.1.3"
 edition = "2021"
 authors = ["LunaStev <lunastev@gurmstudis.com>"]
 description = "A simple file upload and download server in Rust using Actix"

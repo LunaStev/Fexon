@@ -8,9 +8,9 @@ use std::path::{Path, PathBuf};
 use std::time::{SystemTime, UNIX_EPOCH};
 
 const MAX_FILE_SIZE: u64 = 10 * 1024 * 1024; // 10MB
-const ALLOWED_MIME_TYPES: [&str; 2] = ["image/jpeg", "image/png"];
+const ALLOWED_MIME_TYPES: [&str; 3] = ["image/jpeg", "image/png", "image/jpg"]; // 추가된 MIME 타입
 
-fn generate_unique_filename() -> String {
+fn generate_unique_filename(extension: &str) -> String {
     let start = SystemTime::now();
     let duration = start.duration_since(UNIX_EPOCH).expect("Time went backwards");
     let timestamp = duration.as_secs();
@@ -18,7 +18,7 @@ fn generate_unique_filename() -> String {
     let mut rng = rand::thread_rng();
     let random_suffix: u64 = rng.gen_range(1000..9999);
 
-    format!("{}_{:04}", timestamp, random_suffix)
+    format!("{}_{:04}{}", timestamp, random_suffix, extension)
 }
 
 pub async fn upload_file(mut payload: Multipart) -> Result<HttpResponse> {
@@ -29,12 +29,18 @@ pub async fn upload_file(mut payload: Multipart) -> Result<HttpResponse> {
         let mut field = item?;
 
         let content_type = field.content_type().to_string();
-        if !ALLOWED_MIME_TYPES.contains(&content_type.as_str()) {
-            return Ok(HttpResponse::BadRequest().body("Invalid file type"));
-        }
+
+        let extension = match content_type.as_str() {
+            "image/jpeg" => ".jpg",
+            "image/png" => ".png",
+            "image/jpg" => ".jpg",
+            _ => {
+                return Ok(HttpResponse::BadRequest().body("Invalid file type"));
+            }
+        };
 
         let mut total_size = 0;
-        let file_name = generate_unique_filename();
+        let file_name = generate_unique_filename(extension);
         let mut file_path = PathBuf::from(temp_dir);
         file_path.push(file_name);
 
