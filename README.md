@@ -13,7 +13,7 @@ To include `fexon` in your Rust project, add it to your `Cargo.toml` file as fol
 
 ```toml
 [dependencies]
-fexon = "0.1.3"
+fexon = "0.1.5"
 actix-web = "4.0"
 ```
 
